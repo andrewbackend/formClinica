@@ -10,7 +10,7 @@ function cargarSeccion(archivo) {
 
 let citas = [];
 
-function registroCitas(){
+function registrarCita(){
     const nombre = document.getElementById("nombre").value;
     const dni = document.getElementById("dni").value;
     const fecha = document.getElementById("fecha").value;
@@ -30,5 +30,24 @@ function registroCitas(){
 
 
 function mostrarPacientes (){
+    const listaPacientesDiv = document.getElementById("lista-pacientes");
+    listaPacientesDiv.innerHTML = "<h3>Pacientes Registrados</h3>";
+    citas.forEach((cita, index) => { 
+        listaPacientesDiv.innerHTML += `
+            <div class="cita-detalle" id="cita-${index}">
+                <p><strong>Paciente: </strong> ${cita.nombre}</p>
+                <p><strong>DNI:</strong> ${cita.dni}</p>
+                <p><strong>Fecha de la Cita:</strong> ${cita.fecha}</p>
+                <p><strong>Hora: </strong> ${cita.hora}</p>
+                <p><strong>Motivo: </strong> ${cita.motivo}</p>
+                <button onclick="imprimirCita(${index})">Imprimir en PDF</button>
+            </div>
+            <hr>
+        `;
+    });
+}
+
+
+function imprimirCita{
     
 }
