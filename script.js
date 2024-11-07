@@ -47,7 +47,38 @@ function mostrarPacientes (){
     });
 }
 
+function imprimirCita(index){
+    const cita = citas[index];
+    const vetanaImpresion = window.open('', '_black');
 
-function imprimirCita{
-    
+    vetanaImpresion.document.write(`
+        <htlm>
+            <head>
+            <title>Impresión de Cita</title>
+            <style>
+                body { font-family: Arial, san-serif; padding: 20px;}
+                h2 {color: #4CAF50;}
+                p {margin: 5px 0;}  
+
+                /*Ocultar el botón durante la impresión*/
+                @media print{
+                    button{display: none;}
+                }
+            </style>
+            </head>
+            <body>
+                <h2>Detalles de la Cita del Paciente</h2>
+                <p><strong>Nombre: </strong> ${cita.nombre}</p>
+                <p><strong>DNI:</strong> ${cita.dni}</p>
+                <p><strong>Fecha de la Cita:</strong> ${cita.fecha}</p>
+                <p><strong>Hora: </strong> ${cita.hora}</p>
+                <p><strong>Motivo: </strong> ${cita.motivo}</p>
+                <butto onclick="window.print()">Imprimir en PDF</butto>
+            
+            </body>
+        </htlm>
+        `);
+
+        vetanaImpresion.document.close();
+        vetanaImpresion.focus();
 }
